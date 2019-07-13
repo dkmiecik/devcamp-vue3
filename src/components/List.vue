@@ -1,21 +1,23 @@
 <template>
     <div>
-        <div>
-            <input v-model='todo' type='text'>
-            <button @click='add'>Add</button>
+        <div class="form-group d-flex">
+            <input class="form-control shadow-none rounded-0" v-model='todo' type='text'>
+            <button class="btn btn-primary shadow-none border-0 rounded-0" @click='add'>Add</button>
         </div>
-        <div
-                class='todo-list'
-                v-for='item in items'
-                :key='item.name'
-        >
-            <button @click='done(item.name)'>
-                <span class="todo" v-bind:class="{ 'done': item.isDone }">&#10004;</span>
-            </button>
-            <span>{{ item.name }}</span>
-            <button @click='remove(item.name)'>
-                <span>&times;</span>
-            </button>
+        <div class="list-group">
+            <div
+                    class='todo-list list-group-item d-flex justify-content-between align-items-center'
+                    v-for='item in items'
+                    :key='item.name'
+            >
+                <button @click='done(item.name)' class="shadow-none border-0">
+                    <span class="todo" v-bind:class="{ 'done': item.isDone }">&#10004;</span>
+                </button>
+                <span>{{ item.name }}</span>
+                <button @click='remove(item.name)' class="shadow-none border-0">
+                    <span>&times;</span>
+                </button>
+            </div>
         </div>
     </div>
 </template>
@@ -56,13 +58,7 @@
     };
 </script>
 <style>
-    .todo-list {
-        width: 200px;
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        margin: 20px auto;
-    }
+
     .todo {
         color: red;
     }

@@ -2,7 +2,7 @@
   <div id="app">
     <img alt="Vue logo" src="./assets/logo.png">
     <div class="container">
-    <TaskCounter />
+      <TaskCounter />
     </div>
     <div>
       <router-link class="btn btn-secondary" to="/">Go to list</router-link>
@@ -36,7 +36,6 @@ export default {
   color: #2c3e50;
   margin-top: 60px;
 }
-<<<<<<< HEAD
 
 .btn-secondary {
   margin-left: 8px;
@@ -51,13 +50,12 @@ export default {
 .comp + .comp {
   margin-left: 2em;
 }
-=======
-  .nav {
-    display: flex;
-    justify-content: space-between;
-    align-content: center;
-    width: 200px;
-    margin: 0 auto;
-  }
->>>>>>> 1e32bdef1fc0f426935dfca8e56c0e0a287c8c19
+
+.nav {
+  display: flex;
+  justify-content: space-between;
+  align-content: center;
+  width: 200px;
+  margin: 0 auto;
+}
 </style>
