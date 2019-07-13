@@ -5,13 +5,18 @@
             <button class='btn btn-primary shadow-none border-0 rounded-0' @click='add'>Add</button>
         </div>
         <div class='list-group'>
+
             <div
                     class='list-group-item d-flex justify-content-between align-items-center'
                     v-for='item in items'
-                    :key='item'
+                    :key='item.name'
             >
-                <span>{{ item }}</span>
-                <button class='close shadow-none border-0' @click='remove(item)'>
+                <button class='close shadow-none border-0' @click='done(item.name)'>
+                    <span class="todo" v-bind:class="{ 'done': item.isDone }">&#10004;</span>
+                </button>
+                <span>{{ item.name }}</span>
+                <span>{{ item.isDone }}</span>
+                <button class='close shadow-none border-0' @click='remove(item.name)'>
                     <span>&times;</span>
                 </button>
             </div>
@@ -20,18 +25,20 @@
 </template>
 
 <script>
-    import { value, computed } from 'vue-function-api';
+    import { value } from 'vue-function-api';
+
+    import useStore from '../utils/useStore';
 
     export default {
         setup(props, { root }) {
             // Reactive value-based variables
             const todo = value('');
-            const items = computed(() => root.$store.state.items);
+            const { items } = useStore(root);
 
             // Add: Click Handler Function
             const add = () => {
                 if (todo.value) {
-                    root.$store.commit('add', todo.value);
+                    root.$store.commit('add', { name: todo.value, isDone: false });
                     todo.value = '';
                 }
             };
@@ -39,12 +46,24 @@
             const remove = item => {
                 root.$store.commit('remove', item);
             };
+            const done = item => {
+                root.$store.commit('setAsDone', item);
+            };
             return {
                 todo,
                 items,
+                done,
                 add,
                 remove
             };
         }
     };
 </script>
+<style>
+    .todo {
+        color: red;
+    }
+    .done {
+        color: green;
+    }
+</style>
