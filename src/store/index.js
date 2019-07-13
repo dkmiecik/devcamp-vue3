@@ -10,6 +10,9 @@ export default new Vuex.Store({
     mutations: {
         add (state, value) {
             state.items.push(value);
+        },
+        remove (state, item) {
+            state.items = state.items.filter(v => v !== item);
         }
     }
 });

@@ -20,25 +20,24 @@
 </template>
 
 <script>
-    import { value } from 'vue-function-api';
+    import { value, computed } from 'vue-function-api';
 
     export default {
         setup(props, { root }) {
             // Reactive value-based variables
             const todo = value('');
-            const items = value(root.$store.state.items);
+            const items = computed(() => root.$store.state.items);
 
             // Add: Click Handler Function
             const add = () => {
                 if (todo.value) {
                     root.$store.commit('add', todo.value);
-                    // items.value.push(todo.value);
                     todo.value = '';
                 }
             };
             //Remove: Click Handler Function
             const remove = item => {
-                items.value = items.value.filter(v => v !== item);
+                root.$store.commit('remove', item);
             };
             return {
                 todo,
