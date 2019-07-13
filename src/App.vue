@@ -9,8 +9,8 @@
 import TODO from './components/TodoV3.vue'
 
 export default {
-  name: 'app',
-  components: {
+    name: 'app',
+    components: {
       TODO
   }
 }
