@@ -1,25 +1,21 @@
 <template>
     <div>
-        <div class='form-group d-flex'>
-            <input v-model='todo' type='text' class='form-control shadow-none rounded-0'>
-            <button class='btn btn-primary shadow-none border-0 rounded-0' @click='add'>Add</button>
+        <div>
+            <input v-model='todo' type='text'>
+            <button @click='add'>Add</button>
         </div>
-        <div class='list-group'>
-
-            <div
-                    class='list-group-item d-flex justify-content-between align-items-center'
-                    v-for='item in items'
-                    :key='item.name'
-            >
-                <button class='close shadow-none border-0' @click='done(item.name)'>
-                    <span class="todo" v-bind:class="{ 'done': item.isDone }">&#10004;</span>
-                </button>
-                <span>{{ item.name }}</span>
-                <span>{{ item.isDone }}</span>
-                <button class='close shadow-none border-0' @click='remove(item.name)'>
-                    <span>&times;</span>
-                </button>
-            </div>
+        <div
+                class='todo-list'
+                v-for='item in items'
+                :key='item.name'
+        >
+            <button @click='done(item.name)'>
+                <span class="todo" v-bind:class="{ 'done': item.isDone }">&#10004;</span>
+            </button>
+            <span>{{ item.name }}</span>
+            <button @click='remove(item.name)'>
+                <span>&times;</span>
+            </button>
         </div>
     </div>
 </template>
@@ -47,7 +43,7 @@
                 root.$store.commit('remove', item);
             };
             const done = item => {
-                root.$store.commit('setAsDone', item);
+                root.$store.commit('toggleItemStatus', item);
             };
             return {
                 todo,
@@ -60,6 +56,13 @@
     };
 </script>
 <style>
+    .todo-list {
+        width: 200px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin: 20px auto;
+    }
     .todo {
         color: red;
     }

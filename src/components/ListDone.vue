@@ -1,15 +1,10 @@
 <template>
     <div>
-        <div class='list-group'>
-
-            <div
-                    class='list-group-item d-flex justify-content-between align-items-center'
-                    v-for='item in doneItems'
-                    :key='item.name'
-            >
-                <span>{{ item.name }}</span>
-                <span>{{ item.isDone }}</span>
-            </div>
+        <div
+                v-for='item in doneItems'
+                :key='item.name'
+        >
+            <span>{{ item.name }}</span>
         </div>
     </div>
 </template>

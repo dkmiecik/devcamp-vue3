@@ -1,10 +1,10 @@
 <template>
   <div id="app">
     <img alt="Vue logo" src="./assets/logo.png">
-    <div>
-      <router-link to="/">Go to list</router-link>
-      <router-link to="/done">Go to done list</router-link>
-    </div>
+    <nav class="nav">
+      <router-link class="nav-link" to="/">Go to list</router-link>
+      <router-link class="nav-link" to="/done">Go to done list</router-link>
+    </nav>
     <router-view></router-view>
   </div>
 </template>
@@ -27,4 +27,11 @@ export default {
   color: #2c3e50;
   margin-top: 60px;
 }
+  .nav {
+    display: flex;
+    justify-content: space-between;
+    align-content: center;
+    width: 200px;
+    margin: 0 auto;
+  }
 </style>
