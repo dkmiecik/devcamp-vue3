@@ -1,29 +1,29 @@
 <template>
   <div id="app">
     <img alt="Vue logo" src="./assets/logo.png">
-<<<<<<< HEAD
-    <h3 class="title">Vue functional API demo</h3>
+    <div class="container">
+    <TaskCounter />
+    </div>
+    <div>
+      <router-link class="btn btn-secondary" to="/">Go to list</router-link>
+      <router-link class="btn btn-secondary" to="/done">Go to done list</router-link>
+    </div>
     <div class="container">
       <div class="comp">
-        <TODO/>
+        <router-view></router-view>
       </div>
     </div>
-=======
-    <div>
-      <router-link to="/">Go to list</router-link>
-      <router-link to="/done">Go to done list</router-link>
-    </div>
-    <router-view></router-view>
->>>>>>> d69c9e8d24f213bed94f88b07a21feec826b885d
   </div>
 </template>
 
 <script>
+import TaskCounter from './components/TaskCounter';
 
 export default {
     name: 'app',
     components: {
-  }
+      TaskCounter
+    }
 }
 </script>
 
@@ -35,6 +35,10 @@ export default {
   text-align: center;
   color: #2c3e50;
   margin-top: 60px;
+}
+
+.btn-secondary {
+  margin-left: 8px;
 }
 
 .container {

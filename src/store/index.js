@@ -38,6 +38,9 @@ export default new Vuex.Store({
     getters: {
         doneItems: state => {
             return state.items.filter(todo => todo.isDone);
+        },
+        notYetDoneItems: state => {
+            return state.items.filter(todo => !todo.isDone);
         }
     }
 });
