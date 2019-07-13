@@ -26,10 +26,10 @@ export default new Vuex.Store({
         remove (state, item) {
             state.items = state.items.filter(v => v.name !== item);
         },
-        setAsDone (state, item) {
+        toggleItemStatus (state, item) {
             state.items = state.items.map(i => {
                 if (i.name === item) {
-                    i.isDone = true;
+                    i.isDone = !i.isDone;
                 }
                 return i;
             });
